@@ -23,15 +23,22 @@ function getQuestionPart(phrases) {
             });
         }
         const commonLetter = Array.from(commonLettersSet);
+        if (commonLetter.length === 0) {
+            return null;
+        }
         const word = commonLetter.join("");
         return word;
     }
     const commonWord = extractWord(allGroup);
     if (commonWord) {
         const filteredPhrases = phrases.map((phrase) => phrase.replace(commonWord, ""));
-        console.log(filteredPhrases);
+        return filteredPhrases;
+    }
+    else {
+        console.log("There is no common word in phrases");
+        return [];
     }
 }
-getQuestionPart(["BATHROOM", "BATH SALTS", "BLOODBATH"]);
-getQuestionPart(["FRIENDSHIP", "GIRLFRIEND", "BEFRIEND"]);
+console.log(getQuestionPart(["BATHROOM", "BATH SALTS", "BLOODBATH"]));
+console.log(getQuestionPart(["FRIENDSHIP", "GIRLFRIEND", "BEFRIEND"]));
 //# sourceMappingURL=index.js.map

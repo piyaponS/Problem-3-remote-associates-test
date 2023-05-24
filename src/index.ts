@@ -1,4 +1,4 @@
-function getQuestionPart(phrases: string[]): void {
+function getQuestionPart(phrases: string[]): string[] {
   const phrase = phrases.map((word) => word.replace(/\s/g, ""));
   let phrase1: string[] = phrase[0].split("");
   let phrase2: string[] = phrase[1].split("");
@@ -38,20 +38,28 @@ function getQuestionPart(phrases: string[]): void {
       });
     }
 
-    const commonLetter: String[] = Array.from(commonLettersSet);
+    const commonLetter: string[] = Array.from(commonLettersSet);
+
+    if (commonLetter.length === 0) {
+      return null;
+    }
 
     const word: string = commonLetter.join("");
     return word;
   }
+
   const commonWord: string | null = extractWord(allGroup);
 
   if (commonWord) {
     const filteredPhrases: string[] = phrases.map((phrase) =>
       phrase.replace(commonWord, "")
     );
-    console.log(filteredPhrases);
+    return filteredPhrases;
+  } else {
+    console.log("There is no common word in phrases");
+    return [];
   }
 }
 
-getQuestionPart(["BATHROOM", "BATH SALTS", "BLOODBATH"]);
-getQuestionPart(["FRIENDSHIP", "GIRLFRIEND", "BEFRIEND"]);
+console.log(getQuestionPart(["BATHROOM", "BATH SALTS", "BLOODBATH"]));
+console.log(getQuestionPart(["FRIENDSHIP", "GIRLFRIEND", "BEFRIEND"]));
