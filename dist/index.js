@@ -23,9 +23,6 @@ function getQuestionPart(phrases) {
             });
         }
         const commonLetter = Array.from(commonLettersSet);
-        if (!commonLetter) {
-            return null;
-        }
         const word = commonLetter.join("");
         return word;
     }
@@ -33,9 +30,6 @@ function getQuestionPart(phrases) {
     if (commonWord) {
         const filteredPhrases = phrases.map((phrase) => phrase.replace(commonWord, ""));
         console.log(filteredPhrases);
-    }
-    if (commonWord === null) {
-        console.error("There is no common word in phrases");
     }
 }
 getQuestionPart(["BATHROOM", "BATH SALTS", "BLOODBATH"]);

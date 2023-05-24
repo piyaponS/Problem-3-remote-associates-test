@@ -37,11 +37,8 @@ function getQuestionPart(phrases: string[]): void {
         }
       });
     }
-    const commonLetter: String[] = Array.from(commonLettersSet);
 
-    if (commonLetter.length === 0) {
-      return null;
-    }
+    const commonLetter: String[] = Array.from(commonLettersSet);
 
     const word: string = commonLetter.join("");
     return word;
@@ -53,9 +50,6 @@ function getQuestionPart(phrases: string[]): void {
       phrase.replace(commonWord, "")
     );
     console.log(filteredPhrases);
-  }
-  if (commonWord === null) {
-    console.error("There is no common word in phrases");
   }
 }
 
